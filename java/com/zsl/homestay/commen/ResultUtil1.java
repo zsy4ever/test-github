@@ -21,6 +21,7 @@ public class ResultUtil1 {
         Result result = new Result();
         result.setCode(code);
         result.setMessage(message);
+        1231231
         return result;
     }
 
