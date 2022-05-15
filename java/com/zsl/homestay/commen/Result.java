@@ -15,6 +15,8 @@ public class Result<T> {
 	 * 信息
 	 */
 	private String message;
+	
+	private String nane;
 	/**
 	 * 返回值
 	 */
