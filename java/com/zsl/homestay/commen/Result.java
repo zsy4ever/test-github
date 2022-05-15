@@ -7,7 +7,8 @@ package com.zsl.homestay.commen;
  */
 public class Result<T> {
 	// jdfkjadjfkdfkdsfjkfjksdfhkjsdtestss
-	/**
+	/***
+	*123213
 	 * 状态
 	 */
 	private Integer code;
