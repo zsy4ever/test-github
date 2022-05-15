@@ -6,6 +6,7 @@ package com.zsl.homestay.commen;
  * @param <T>
  */
 public class Result<T> {
+	// jdfkjadjfkdfkdsfjkfjksdfhkjsdtestss
 	/**
 	 * 状态
 	 */
