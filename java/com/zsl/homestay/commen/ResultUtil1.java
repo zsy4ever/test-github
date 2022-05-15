@@ -5,7 +5,7 @@ import org.apache.catalina.connector.Response;
 public class ResultUtil1 {
 
     public static Result success(Object object) {
-        21212121
+        212121212121
         Result result = new Result();
         result.setCode(Response.SC_OK);
         result.setMessage("操作成功");
