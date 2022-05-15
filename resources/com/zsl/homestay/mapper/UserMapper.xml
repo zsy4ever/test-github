@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zsl.homestay.mapper.UserMapper">
+    <select id="queryAll" resultType="com.zsl.homestay.model.User">
+        select 
+        name userName,
+        id id,
+        password password,
+        passport passport,
+        address address,
+        passport_photo passportPhoto,
+        create_by createBy,
+        create_time createTime,
+        cs_job csJob,
+        destination destination,
+        bf_destination bfDestination,
+        sign sign
+        from user_profile
+        <where>
+            <if test="userName != null">
+                and name like BINARY CONCAT('%',#{userName},'%')
+            </if>
+            <if test="passport != null">
+                and passport =#{passport}
+            </if>
+        </where>
+    </select>
+    <delete id="deleteById">
+        delete
+        from user_frofile
+        where id = #{id}
+    </delete>
+    <update id="updateUser">
+        update user_profile
+        <set>
+            <if test="userName != null">
+                name = #{userName},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="passport != null">
+                passport =#{passport},
+            </if>
+            <if test="passportPhoto != null">
+                passport_photo = #{passportPhoto},
+            </if>
+            <if test="modifyBy != null">
+                modify_by = #{modifyBy},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime},
+            </if>
+             <if test="csJob != null">
+                cs_job = #{csJob},
+            </if>
+             <if test="destination != null">
+                destination = #{destination},
+            </if>
+             <if test="bfDestination != null">
+                bf_destination = #{bfDestination},
+            </if>
+             <if test="sign != null">
+                sign = #{sign},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <select id="selectById" resultType="com.zsl.homestay.model.User">
+        select name           userName,
+               password,
+               passport,
+               address,
+               passport_photo passportPhoto,
+               create_by      createBy,
+               create_time    createTime,
+               cs_job csJob,
+		       destination destination,
+		       bf_destination bfDestination,
+		       sign sign
+        from user_profile
+        where id = #{id}
+    </select>
+    <insert id="create">
+        insert into user_profile
+        (id,name,password,passport,address,passport_photo,create_by,
+        create_time,modify_by,modify_time,cs_job,destination,bf_destination,sign)
+        values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+                #{passport,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{passportPhoto,jdbcType=VARCHAR},
+                #{createBy,jdbcType=VARCHAR}, now(), #{modifyBy,jdbcType=VARCHAR},
+                now(), #{csJob,jdbcType=VARCHAR},#{destination,jdbcType=VARCHAR}
+                ,#{bfDestination,jdbcType=VARCHAR},#{sign,jdbcType=VARCHAR})
+    </insert>
+    <select id="selectUserName" resultType="com.zsl.homestay.model.User">
+        select name userName, password
+        from user_profile
+        where name = #{userName,jdbcType=VARCHAR}
+    </select>
+    <select id="selectPassword" resultType="java.lang.String">
+        select password
+        from user_profile
+        where name = #{password}
+    </select>
+</mapper>
