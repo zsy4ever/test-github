@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexController {
-
+    测试回退版本hard1
     @GetMapping("/index")
     @ApiOperation(value="首页")
     public String index() {
